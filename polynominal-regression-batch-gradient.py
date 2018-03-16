@@ -25,7 +25,7 @@ def update_line(g, x, y):
     ax.relim()
     ax.autoscale_view(True,True,True)
     plt.draw()
-    #plt.pause(0.001)
+    plt.pause(0.001)
 
 #just plot x values in range 0, 10 step 0.5
 x = np.arange(0, 10, 0.5)
