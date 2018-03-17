@@ -1,4 +1,3 @@
-#we use polynominal h(x) = theta0*x0 + theta1*x1 + theta2*x2 + theta3*x3
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -13,7 +12,6 @@ x = np.array([-0.99768,
 	0.47742,
 	0.82229])
 m = len(x)
-#generate y values x^2-10x+25
 y = np.array([2.0885,
 	1.1646,
 	0.3287,
