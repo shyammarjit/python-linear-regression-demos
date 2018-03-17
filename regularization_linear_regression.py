@@ -32,18 +32,26 @@ y_train = (y[:, np.newaxis])
 theta = np.array(np.zeros((x_train.shape[0], 1)))
 
 i = 0
-alpha = 0.0001
+alpha = 0.001
 lamda = 10
+preJ = 0
+while (True):
+    i = i + 1
+    h = theta.T.dot(x_train)
+    error = h.T - y_train
+    J = (error.T.dot(error) + lamda*theta[1::,0].T.dot(theta[1::,0]))/2*m; print(J)
+    if(preJ == 0):
+        preJ = J
+    if(preJ < J):
+        break
+    else:
+        preJ = J
+        
+    tmp = alpha*x_train.dot(error)/m
+    tmp2 = tmp[1::,0] - alpha*lamda*theta[1::,0]/m
+    theta[0,0::] = theta[0,0::] - tmp[0,0::]
+    theta[1::,0] = theta[1::,0] - tmp2
 
-while True:
-	i = i + 1
-	h = theta.T.dot(x_train)
-	error = h.T - y_train
-	J = (error.T.dot(error) + lamda*theta[1::,0].T.dot(theta[1::,0]))/2*m; print(J)
-	if(J < 0.01):
-		break
-	theta[0,0::] = theta[0,0::] - alpha*x_train.dot(error)[0,0::]/m;
-	theta[1::,0] = theta[1::,0] - alpha*(x_train.dot(error)[1::,0] - theta[1::,0])/m;
 print(theta)
 y_pred = theta.T.dot(x_train)
 plt.plot(x, y_pred.T)
