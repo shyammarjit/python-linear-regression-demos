@@ -21,7 +21,7 @@ y = np.array([2.0885,
  -0.32952])
 
 
-#form matrix x and Y
+#form matrix X and Y
 X = np.array([np.ones(len(x)), x, np.power(x, 2), np.power(x, 3), np.power(x, 4), np.power(x, 5)]).T
 Y = (y[:, np.newaxis])
 one = np.identity(X.shape[1])
